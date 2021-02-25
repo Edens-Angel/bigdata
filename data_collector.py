@@ -102,9 +102,6 @@ def scrapeHotel(driver, url):
             review_box = right_container.find_element_by_class_name("c-review")
             list_of_reviews = review_box.find_elements_by_class_name("c-review__row")
             
-            if len(list_of_reviews) <= 1 :
-                break
-
             if len(list_of_reviews) <= 2:
                 continue
 
