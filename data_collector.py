@@ -78,9 +78,13 @@ def scrapeHotel(driver, url):
 
     ## Actual review scraping
     # loop through paginations
-    pagination_div = driver.find_element_by_class_name("c-pagination")
-    last_pagination = pagination_div.find_elements_by_class_name("bui-pagination__item")
-    last_pagination.pop()
+    try:
+        pagination_div = driver.find_element_by_class_name("c-pagination")
+        last_pagination = pagination_div.find_elements_by_class_name("bui-pagination__item")
+        last_pagination.pop()
+    except NoSuchElementException:
+        return
+        
     number_of_pages = int(last_pagination[-1].text.split()[0])
     for _ in range(number_of_pages):
         sleep(1)
@@ -144,10 +148,10 @@ def scrapeHotel(driver, url):
                 
                 if k == 0:
                     postive += review_text
-                    postive_word_count += len(review_text)
+                    postive_word_count += len(review_text.split())
                 else:
                     negative += review_text
-                    negative_word_count += len(review_text)
+                    negative_word_count += len(review_text.split())
 
             total_data = [hotel_adress, None, cleaned_date, avg_score, hotel_name, nationality,
                         negative, negative_word_count, total_reviews, postive, postive_word_count,
@@ -166,6 +170,8 @@ with open("./resources/url.txt") as file:
     for row in file:
         driver = driver_setup()
         total_df_array.append(scrapeHotel(driver, row))
+        
+        print(len(total_df_array))
     file.close()
 
 final_df = pd.concat(total_df_array, ignore_index=True)

@@ -1,3 +1,5 @@
+.env
 .idea
 Hotel_Reviews.csv
 webscraped.csv
+handwritten_reviews.csv
