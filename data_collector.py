@@ -20,7 +20,7 @@ column_names = ["Hotel_Address","Additional_Number_of_Scoring",
 
 # driver options
 def driver_setup():
-    DRIVER_PATH = r"C:\Users\Paulus\Desktop\School\Big data\assignments\assignment 1\chromedriver/chromedriver.exe"
+    DRIVER_PATH = r"C:\Users\paulo\Desktop\Big data\assignments\assignment 1\chromedriver/chromedriver.exe"
     driver = webdriver.Chrome(executable_path=DRIVER_PATH)
     return driver
 
@@ -174,6 +174,6 @@ with open("./resources/url.txt") as file:
         print(len(total_df_array))
     file.close()
 
-final_df = pd.concat(total_df_array, ignore_index=True)
-final_df.drop_duplicates()
-final_df.to_csv("./csv/webscraped.csv", index=False)
+# final_df = pd.concat(total_df_array, ignore_index=True)
+# final_df.drop_duplicates()
+# final_df.to_csv("./csv/webscraped.csv", index=False)

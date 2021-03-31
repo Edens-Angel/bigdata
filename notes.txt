@@ -1,0 +1,3 @@
+tfIdvectorizer beats countvectorizer
+adding ngrams increases the value of the ROC curve by 3 %
+trigrams are the best grams. Higher then trigrams does not increase value.
